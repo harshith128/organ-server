@@ -2,7 +2,6 @@ const app = require("./index")
 
 const connect = require("./configs/db")
 
-app.listen(2737,async () => {
-    await connect()
-    console.log("listening at port 2737");
-})
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
