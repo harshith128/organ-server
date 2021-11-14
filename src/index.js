@@ -34,6 +34,6 @@ app.use("/patients", patientController);
 
 app.use("/death", brainDeathController);
 
-app.get("/", (req, res)=> {res.status(200).send("hi")})
+
 
 module.exports = app;
