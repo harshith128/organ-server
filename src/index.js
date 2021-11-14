@@ -3,7 +3,7 @@ const { checkSchema } = require("express-validator");
 
 const app = express();
 app.use(express.json());
-
+var path = require('path');
 var cors = require('cors')
 app.use(cors())
 app.options('*', cors())
@@ -15,6 +15,8 @@ app.options('*', cors())
 // app.use(express.urlencoded({
 //     extended:true
 // }))
+
+app.use(express.static(path.join(__dirname, '../build')));
 
 const hospitalController = require("./controllers/hospital.controller");
 const validateRegister = require("./middleware/validateHospital");
@@ -32,6 +34,6 @@ app.use("/patients", patientController);
 
 app.use("/death", brainDeathController);
 
-app.get("/", (req, res)=> {res.status(200).send("hi")})
+
 
 module.exports = app;
